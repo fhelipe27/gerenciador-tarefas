@@ -20,7 +20,7 @@ public class UsuarioController {
     private UsuarioRepository repository;
 
     // Mostra todos os usuários
-    @GetMapping
+    @GetMapping(value = "/")
     public List<Usuario> findAll() {
         List<Usuario> result = repository.findAll();
         return result;
