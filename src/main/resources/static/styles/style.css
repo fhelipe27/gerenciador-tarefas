@@ -1,0 +1,259 @@
+@charset "UTF-8";
+
+/* Reset de estilos para links */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para links ativos */
+.active {
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.nav-link {
+    color: white;
+}
+
+/* Estilos dos Cards Sociais */
+.card-contato {
+    position: relative;
+    height: 260px;
+    width: 300px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.card-wrapper h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper .social-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    color: #ffffff;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.card-contato:hover .social-name {
+    opacity: 1;
+}
+
+.card-contato .card-wrapper::before {
+    content: '';
+    position: absolute;
+    height: 260px;
+    width: 300px;
+    border: 1px solid #ffffff;
+    opacity: 0;
+    transition: 0.3s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-contato a:hover > .card-wrapper::before {
+    top: 50%;
+    left: 50%;
+    height: 240px;
+    width: 270px;
+    opacity: 1;
+}
+
+.card-facebook {
+    background: url('../images/facebook-card-menor.jpeg') no-repeat center;
+}
+
+.card-instagram {
+    background: url('../images/instagram-card-menor.png') no-repeat center;
+}
+
+.card-twitter {
+    background: url('../images/twitter-card-menor.png') no-repeat center;
+}
+
+.footer-padrao {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.header-principal {
+    background-color: #13293D;
+}
+
+/* CARDS ESTILO SOBRE*/
+.container-sobre {
+    background-color: #13293D;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container-sobre a {
+    text-decoration: none;
+}
+
+.card-container-sobre {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    margin: 5px;
+}
+
+.card-sobre {
+    height: 300px;
+    width: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.5);
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid white;
+}
+
+.cs-1 {
+    background-image: url('../images/github-card-menor.jpg');
+}
+
+.cs-2 {
+    background-image: url('../images/linkedin-card-menor.jpg');
+}
+
+.cs-3 {
+    background-image: url('../images/instagram-card-menor.png');
+}
+
+.card-sobre:hover {
+    filter: unset;
+}
+
+.card-text-sobre {
+    width: 40%;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.card-wrapper-sobre {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card-wrapper-sobre::before {
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: block;
+    border: 1px solid #ffffff;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper-sobre h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper-sobre p {
+    font-size: 0;
+    visibility: hidden;
+    opacity: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.card-sobre:hover>.card-wrapper-sobre::before {
+    height: 250px;
+    width: 350px;
+    opacity: 1;
+}
+
+.card-sobre:hover>.card-wrapper-sobre p {
+    font-size: 14px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Misc */
+.suas-atividades {
+    height: 453px;
+    background-color: #13293D;
+}
+
+/* Responsivo */
+@media (max-width: 800px) {
+
+    .container-sobre {
+        margin-top: 0;
+    }
+
+    .card-container-sobre {
+        flex-direction: column;
+    }
+
+    .container-sobre .card-container-sobre:nth-child(1),
+    .container-sobre .card-container-sobre:nth-child(3) {
+        flex-direction: column-reverse;
+    }
+
+    .card-sobre {
+        height: 250px;
+        width: 250px;
+    }
+
+    .card-text-sobre {
+        width: 90%;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .card-sobre:hover>.card-sobre.card-wrapper-sobre::before {
+        height: 190px;
+        width: 190px;
+    }
+
+    .card-wrapper-sobre h2 {
+        font-size: 35px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin: 0;
+        transition: 0.3s;
+    }
+
+    .card-sobre:hover>.card-wrapper-sobre::before {
+        height: 200px;
+        width: 200px;
+        opacity: 1;
+    }
+}
