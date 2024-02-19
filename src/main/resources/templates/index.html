@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
+<html xmlns:th="http://thymeleaf.org" lang="pt-br">
 
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
     <title>Gerenciador de Atividades</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/task-favicon.png" />
+    <link rel="icon" type="image/x-icon" href="assets/task-favicon.png"/>
     <!-- Ícones do Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Link Bootstrap -->
-    <link href="styles/bootstrap.css" rel="stylesheet" />
+    <link href="styles/bootstrap.css" rel="stylesheet"/>
     <!-- Link CSS -->
     <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -151,7 +151,7 @@
                             atividades, compartilhe ideias e mantenha todos na mesma página com a funcionalidade
                             fácil de criação de tarefas.</p>
                     </div>
-                    <a href="servicos.html"
+                    <a th:href="@{/servicos}"
                        class="card-footer text-center bg-primary text-white text-decoration-none"
                        onmouseover="this.classList.add('text-decoration-underline')"
                        onmouseout="this.classList.remove('text-decoration-underline')">
@@ -173,7 +173,7 @@
                             membros do grupo de forma rápida e clara. Mantenha todos informados sobre quem está
                             encarregado de cada parte do projeto.</p>
                     </div>
-                    <a href="servicos.html"
+                    <a th:href="@{/servicos}"
                        class="card-footer text-center bg-primary text-white text-decoration-none"
                        onmouseover="this.classList.add('text-decoration-underline')"
                        onmouseout="this.classList.remove('text-decoration-underline')">
@@ -194,7 +194,7 @@
                             atividades e mantenha todos focados nos objetivos. Nossa ferramenta facilita a gestão do
                             tempo para garantir entregas pontuais.</p>
                     </div>
-                    <a href="servicos.html"
+                    <a th:href="@{/servicos}"
                        class="card-footer text-center bg-primary text-white text-decoration-none"
                        onmouseover="this.classList.add('text-decoration-underline')"
                        onmouseout="this.classList.remove('text-decoration-underline')">

@@ -1,28 +1,27 @@
-package br.com.unipac.gerenciadoratividadesapp.models;
+    package br.com.unipac.gerenciadoratividadesapp.models;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+    import jakarta.persistence.*;
+    import lombok.AllArgsConstructor;
+    import lombok.Getter;
+    import lombok.NoArgsConstructor;
+    import lombok.Setter;
 
-@Setter
-@Getter
-@Entity
-@Table(name = "tb_usuario")
-public class Usuario {
+    @Setter
+    @Getter
+    @Entity
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Table(name = "tb_usuario")
+    public class Usuario {
 
-    // atributos
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long idUsuario;
 
-    private String nomeUsuario;
+        private String nome;
 
-    @ManyToOne
-    @JoinColumn(name = "tb_tarefa")
-    private Tarefa tarefa;
+        @ManyToOne
+        @JoinColumn(name = "tb_tarefa")
+        private Tarefa tarefa;
 
-    // construtor
-
-    public Usuario() {
     }
-}

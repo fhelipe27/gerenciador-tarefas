@@ -19,6 +19,7 @@ public class NavigationController {
     public String sobre() {
         return "sobre";
     }
+
     @GetMapping("/contato")
     public String contato() {
         return "contato";
