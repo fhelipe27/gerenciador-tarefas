@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="pt-br">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Gerenciador de Atividades</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/task-favicon.png}"/>
+    <!-- Ícones do Bootstrap-->
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css}" rel="stylesheet"/>
+    <!-- Link Bootstrap -->
+    <link th:href="@{/styles/bootstrap.css}" rel="stylesheet"/>
+    <!-- Link CSS -->
+    <link th:href="@{/styles/style.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div id="page-container">
+    <div id="content-wrap">
+        <!-- Navbar Responsiva -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" th:href="@{/}">Gerenciador de Atividades</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/}">Início</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/servicos}">Serviços</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/contato}">Contato</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/sobre}">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="text-center m-5">
+            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                <i class="bi bi-plus-circle-fill"></i>
+            </div>
+            <h2 class="fw-bolder">Crie sua tarefa</h2>
+        </div>
+
+        <!-- Formulário para adicionar produtos -->
+        <form class="formTarefa" method="POST" action="/tarefa/criar-atividade" th:object="${tarefa}">
+
+            <!-- ID -->
+            <input type="hidden" th:value="${tarefa.idTarefa}" name="id"/>
+
+            <!-- Campo Nome -->
+            <div class="form-group">
+                <label for="nome">Nome da Tarefa:</label>
+                <input type="text" class="form-control mt-3" id="nome" name="nome" th:value="${tarefa.nome}" maxlength="50" placeholder="Tarefa A" required>
+            </div>
+
+            <!-- Campo Data Inicio -->
+            <div class="form-group mt-3">
+                <label for="dataInicio">Data de Início:</label>
+                <input type="date" class="form-control mt-3" id="dataInicio" name="dataInicio" th:value="${tarefa.dataInicio}" maxlength="10" required>
+            </div>
+
+            <!-- Campo Descrição -->
+            <div class="form-group mt-3">
+                <label for="descricao">Descrição:</label>
+                <textarea class="form-control mt-3" id="descricao" name="descricao" th:value="${tarefa.descricao}" maxlength="255" placeholder="Descreva a tarefa" required></textarea>
+            </div>
+
+            <!-- Campo Data Final -->
+            <div class="form-group mt-3">
+                <label for="dataFinal">Data Final:</label>
+                <input type="date" class="form-control mt-3" id="dataFinal" name="dataFinal" th:value="${tarefa.dataFinal}" required>
+            </div>
+
+            <!-- Botão de Envio -->
+            <div class="form-group text-end mt-4">
+                <button type="submit" class="btn btn-primary">Cadastrar Tarefa</button>
+            </div>
+
+
+        </form>
+
+    </div>
+    <!-- Footer-->
+    <footer class="bg-dark text-white text-center footer-padrao d-flex align-items-center">
+        <div class="container">
+            <p class="m-0">Copyright &copy; Fhelipe Alves - 2023</p>
+            <p class="m-0">
+                <a href="https://www.linkedin.com/in/fhelipe-alves/" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/fhelipe27" target="_blank">GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</div>
+</body>
+
+</html>

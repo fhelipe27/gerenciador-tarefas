@@ -16,19 +16,21 @@ import java.util.List;
 @Table(name = "tb_tarefa")
 public class Tarefa {
 
-    // atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idTarefa;
+    private Long idTarefa;
 
+    @Column(name = "nome", length = 50)
     private String nome;
 
+    @Column(name = "descricao", length = 255)
+    private String descricao;
+
+    @Column(name = "data_inicio", length = 255)
     private String dataInicio;
 
+    @Column(name = "data_final", length = 255)
     private String dataFinal;
-
-    @OneToMany(mappedBy = "tarefa", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Usuario> usuarioList;
 
 }
 

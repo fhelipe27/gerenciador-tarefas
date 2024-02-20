@@ -1,30 +1,32 @@
 package br.com.unipac.gerenciadoratividadesapp.controllers;
 
 import br.com.unipac.gerenciadoratividadesapp.models.Tarefa;
-import br.com.unipac.gerenciadoratividadesapp.models.Usuario;
-import br.com.unipac.gerenciadoratividadesapp.repositories.TarefaRepository;
-import br.com.unipac.gerenciadoratividadesapp.repositories.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import br.com.unipac.gerenciadoratividadesapp.services.TarefaService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-@RestController
-@RequestMapping(value = "/tarefas")
+@Controller
+@RequiredArgsConstructor
+@RequestMapping("/tarefa")
 public class TarefaController {
 
-    @Autowired
-    private TarefaRepository repository;
+    private final TarefaService tarefaService;
 
-    // Mostra todas as tarefas
-    @GetMapping
-    public String findAll(Model model) {
-        List<Tarefa> tarefas = repository.findAll();
-        model.addAttribute("tarefas", tarefas);
-        return "servicos";
+    @GetMapping("/criar-atividade")
+    public String showForm(Model model) {
+        model.addAttribute("tarefa", new Tarefa());
+        return "criar-atividade";
+    }
+
+    @PostMapping("/criar-atividade")
+    public String create(@ModelAttribute("tarefa") Tarefa tarefa) {
+        tarefaService.salvarTarefa(tarefa);
+        return "redirect:/tarefa/criar-atividade";
     }
 
 }
