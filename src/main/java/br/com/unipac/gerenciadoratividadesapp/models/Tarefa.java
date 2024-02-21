@@ -32,5 +32,9 @@ public class Tarefa {
     @Column(name = "data_final", length = 255)
     private String dataFinal;
 
+    @ManyToOne
+    @JoinColumn(name = "grupo_id")
+    private Grupo grupo;
+
 }
 
