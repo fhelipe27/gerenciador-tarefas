@@ -36,11 +36,5 @@ public class Tarefa {
     @JoinColumn(name = "grupo_id")
     private Grupo grupo;
 
-    @ManyToMany
-    @JoinTable(name = "tarefas_alunos",
-            joinColumns = @JoinColumn(name = "tarefa_id"),
-            inverseJoinColumns = @JoinColumn(name = "usuario_id")
-    )
-    private List<Usuario> usuarios;
 }
 

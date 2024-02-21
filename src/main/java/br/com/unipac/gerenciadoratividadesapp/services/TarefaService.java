@@ -31,32 +31,19 @@ public class TarefaService {
     // função para achar por id
     @Transactional(readOnly = true)
     public Optional<Tarefa> buscarPorId(Long id) {
-        try {
             return tarefaRepository.findById(id);
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao buscar a tarefa por ID", e);
-        }
     }
 
     // função para achar todos
     @Transactional(readOnly = true)
     public List<Tarefa> buscarTodos() {
-        try {
             return tarefaRepository.findAll();
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao buscar todas as tarefas", e);
-        }
     }
 
     // função para deletar por id
     @Transactional
     public void deletarPorId(Long id) {
-        try {
-            tarefaRepository.deleteById(id);
-        } catch (Exception e) {
-            String mensagemErro = "Erro ao deletar a tarefa por ID";
-            throw new RuntimeException(mensagemErro, e);
-        }
+        tarefaRepository.deleteById(id);
     }
 
 

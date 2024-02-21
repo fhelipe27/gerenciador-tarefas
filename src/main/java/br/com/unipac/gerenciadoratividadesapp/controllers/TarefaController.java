@@ -5,10 +5,10 @@ import br.com.unipac.gerenciadoratividadesapp.services.TarefaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,6 +21,29 @@ public class TarefaController {
     public String showForm(Model model) {
         model.addAttribute("tarefa", new Tarefa());
         return "criar-atividade";
+    }
+
+    @GetMapping("/lista-atividades")
+    public ModelAndView listaAtividades() {
+        ModelAndView mv = new ModelAndView("lista-atividades");
+        mv.addObject("tarefas", tarefaService.buscarTodos());
+        mv.addObject("tarefa", new Tarefa());
+        return mv;
+    }
+
+    @GetMapping("/editar/{id}")
+    public ModelAndView editar(@PathVariable("id") Long id) {
+        ModelAndView mv = new ModelAndView("editar");
+        Optional<Tarefa> produtoFind = tarefaService.buscarPorId(id);
+        Tarefa tarefa = produtoFind.orElse(null);
+        mv.addObject("tarefa", tarefa);
+        return mv;
+    }
+
+    @GetMapping("/deletar/{id}")
+    public String deletar(@PathVariable("id") Long id) {
+        tarefaService.deletarPorId(id);
+        return "redirect:/tarefa/lista-atividades";
     }
 
     @PostMapping("/criar-atividade")

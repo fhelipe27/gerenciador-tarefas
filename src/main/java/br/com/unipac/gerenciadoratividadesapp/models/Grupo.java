@@ -23,10 +23,6 @@ public class Grupo {
     private String nome;
 
     @OneToMany(mappedBy = "grupo")
-    private List<Usuario> usuarios;
-
-    @OneToMany(mappedBy = "grupo")
     private List<Tarefa> tarefas;
-
 
 }

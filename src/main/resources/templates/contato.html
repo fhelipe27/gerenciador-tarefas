@@ -50,51 +50,58 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <form id="contactForm">
+
                         <!-- Input de Nome -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="name" type="text" placeholder="Coloque seu nome..."
+                            <input class="form-control" id="name" type="text" placeholder=""
                                    data-sb-validations="required"/>
                             <label for="name">Nome Completo</label>
                             <div class="invalid-feedback" data-sb-feedback="name:required">É preciso digitar um nome.
                             </div>
                         </div>
+
                         <!-- Input de Email-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" placeholder="nome@exemplo.com"
+                            <input class="form-control" id="email" type="email" placeholder=""
                                    data-sb-validations="required,email"/>
                             <label for="email">Endereço de Email</label>
                             <div class="invalid-feedback" data-sb-feedback="email:required">É preciso digitar um Email.
                             </div>
                             <div class="invalid-feedback" data-sb-feedback="email:email">Email não é válido.</div>
                         </div>
+
                         <!-- Input de Telefone -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
+                            <input class="form-control" id="phone" type="tel" placeholder=""
                                    data-sb-validations="required"/>
                             <label for="phone">Número de Telefone</label>
                             <div class="invalid-feedback" data-sb-feedback="phone:required">É preciso digitar um número
                                 de telefone.
                             </div>
                         </div>
+
                         <!-- Input de Mensagem -->
                         <div class="form-floating mb-3">
-                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..."
+                        <textarea class="form-control" id="message" type="text" placeholder=""
                                   style="height: 10rem" data-sb-validations="required"></textarea>
                             <label for="message">Mensagem</label>
                             <div class="invalid-feedback" data-sb-feedback="message:required">É preciso digitar uma
                                 mensagem.
                             </div>
                         </div>
+
                         <!-- Mensagem de envio com sucesso -->
                         <div class="d-none" id="submitSuccessMessage">
                             <div class="text-center mb-3">
                                 <div class="fw-bolder">Enviado com sucesso!</div>
                             </div>
                         </div>
+
                         <!-- Mensagem de erro ao enviar -->
                         <div class="d-none" id="submitErrorMessage">
                             <div class="text-center text-danger mb-3">Erro ao enviar mensagem!</div>
                         </div>
+
                         <!-- Botão de Envio -->
                         <div class="d-grid">
                             <button class="btn btn-primary btn-lg disabled" id="submitButton"
