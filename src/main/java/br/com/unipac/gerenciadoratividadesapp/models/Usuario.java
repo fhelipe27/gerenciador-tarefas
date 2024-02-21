@@ -6,6 +6,8 @@
     import lombok.NoArgsConstructor;
     import lombok.Setter;
 
+    import java.util.List;
+
     @Setter
     @Getter
     @Entity
@@ -20,8 +22,11 @@
 
         private String nome;
 
+        @ManyToMany(mappedBy = "usuarios")
+        private List<Tarefa> tarefas;
+
         @ManyToOne
-        @JoinColumn(name = "tb_tarefa")
-        private Tarefa tarefa;
+        @JoinColumn(name = "grupo_id")
+        private Grupo grupo;
 
     }
