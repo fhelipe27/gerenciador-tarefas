@@ -267,7 +267,7 @@ a:hover {
         text-transform: uppercase;
         letter-spacing: 4px;
         margin: 0;
-        transition: 0.3s;
+        transition: 0.3s; 
     }
 
     .card-sobre:hover>.card-wrapper-sobre::before {

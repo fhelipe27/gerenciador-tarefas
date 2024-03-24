@@ -31,11 +31,11 @@ public class TarefaController {
         return mv;
     }
 
-    @GetMapping("/editar/{id}")
+    @GetMapping("/editar-atividade/{id}")
     public ModelAndView editar(@PathVariable("id") Long id) {
-        ModelAndView mv = new ModelAndView("editar");
-        Optional<Tarefa> produtoFind = tarefaService.buscarPorId(id);
-        Tarefa tarefa = produtoFind.orElse(null);
+        ModelAndView mv = new ModelAndView("editar-atividade");
+        Optional<Tarefa> tarefaFind = tarefaService.buscarPorId(id);
+        Tarefa tarefa = tarefaFind.orElse(null);
         mv.addObject("tarefa", tarefa);
         return mv;
     }
@@ -47,9 +47,15 @@ public class TarefaController {
     }
 
     @PostMapping("/criar-atividade")
-    public String create(@ModelAttribute("tarefa") Tarefa tarefa) {
+    public String criar(@ModelAttribute("tarefa") Tarefa tarefa) {
         tarefaService.salvarTarefa(tarefa);
         return "redirect:/tarefa/criar-atividade";
+    }
+
+    @PostMapping("/editar-atividade/{id}")
+    public String editar(@ModelAttribute("tarefa") Tarefa tarefa, @PathVariable("id") Long id) {
+        tarefaService.editarPorId(id, tarefa);
+        return "redirect:/tarefa/lista-atividades";
     }
 
 }
