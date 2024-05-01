@@ -40,6 +40,12 @@ public class TarefaController {
         return mv;
     }
 
+    @GetMapping("/editar-atividade-sem-id")
+    public String editarSemId(Model model) {
+        model.addAttribute("tarefa", new Tarefa());
+        return "editar-atividade-sem-id";
+    }
+
     @GetMapping("/deletar/{id}")
     public String deletar(@PathVariable("id") Long id) {
         tarefaService.deletarPorId(id);

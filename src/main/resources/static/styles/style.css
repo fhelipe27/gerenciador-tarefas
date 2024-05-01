@@ -65,7 +65,7 @@ a:hover {
     transform: translate(-50%, -50%);
 }
 
-.card-contato a:hover > .card-wrapper::before {
+.card-contato a:hover>.card-wrapper::before {
     top: 50%;
     left: 50%;
     height: 240px;
@@ -87,19 +87,21 @@ a:hover {
 
 /* os 3 elementos abaixo garantem que o Footer fique sempre na parte de baixo da página. */
 #page-container {
-  position: relative;
-  min-height: 100vh;
+    position: relative;
+    min-height: 100vh;
 }
 
 #content-wrap {
-  padding-bottom: 70px;    /* altura do rodapé */
+    padding-bottom: 70px;
+    /* altura do rodapé */
 }
 
 .footer-padrao {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 70px;     /* altura do rodapé */
+    height: 70px;
+    /* altura do rodapé */
 }
 
 .formTarefa {
@@ -267,7 +269,7 @@ a:hover {
         text-transform: uppercase;
         letter-spacing: 4px;
         margin: 0;
-        transition: 0.3s; 
+        transition: 0.3s;
     }
 
     .card-sobre:hover>.card-wrapper-sobre::before {

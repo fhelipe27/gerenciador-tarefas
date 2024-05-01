@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Gerenciador de Atividades</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/task-favicon.png" />
+    <!-- Ícones do Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Link Bootstrap -->
+    <link href="styles/bootstrap.css" rel="stylesheet" />
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<style>
+    body {
+    background-image: url('../images/login-image.jpg');
+    background-size: cover; /* Mantém o tamanho original da imagem */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+</style>
+<body>
+    <div id="page-container">
+        <div id="content-wrap">
+
+            <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+                <div class="card p-4 text-white" style="width: 400px; height: 350px; background-color: rgba(11, 0, 48, 0.8); box-shadow: 0 4px 10px rgba(0, 0, 0, 1);">
+                    <h3 class="text-center mb-4">Login</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Endereço de Email</label>
+                            <input type="email" class="form-control mt-2 mb-3" id="email" placeholder="Digite seu email" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control mt-2" id="password" placeholder="Digite sua senha"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Log In</button>
+                    </form>
+                    <div class="text-center mt-4">
+                        <a class="text-white" href="#">Esqueceu sua senha?</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Bootstrap core JS-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="js/scripts.js"></script>
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <!-- * *                               SB Forms JS                               * *-->
+            <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        </div>
+    </div>
+</body>
+
+</html>

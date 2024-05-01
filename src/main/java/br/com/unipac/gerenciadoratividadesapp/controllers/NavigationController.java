@@ -25,4 +25,8 @@ public class NavigationController {
         return "contato";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }
