@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="pt-br">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Gerenciador de Atividades</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/task-favicon.png"/>
+    <!-- Ícones do Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"/>
+    <!-- Link Bootstrap -->
+    <link href="styles/bootstrap.css" rel="stylesheet"/>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<style>
+    body {
+        background-image: url('../images/login-image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+
+<body>
+<div id="page-container">
+    <div id="content-wrap">
+
+        <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="card p-4 text-white"
+                 style="width: 400px; height: 450px; background-color: rgba(11, 0, 48, 0.8); box-shadow: 0 4px 10px rgba(0, 0, 0, 1);">
+                <h3 class="text-center mb-4">Registre-se</h3>
+
+                <div th:if="${session.msg}">
+                    <p class="text-center fs-4 text-success" th:text="${session.msg}"></p>
+                    <th:block th:utext="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
+                </div>
+
+
+                <form action="createGrupo" method="post">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control mt-2 mb-3" id="nome" name="nome"
+                               placeholder="Digite seu nome" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="email">Endereço de E-mail</label>
+                        <input type="text" class="form-control mt-2 mb-3" id="email" name="email"
+                               placeholder="Digite seu email" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control mt-2" id="senha" name="senha"
+                               placeholder="Digite sua senha" required>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Registrar</button>
+                    </div>
+                </form>
+                <div class="text-center mt-4">
+                    <a class="text-white" th:href="@{/signin}">Fazer Login</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </div>
+</div>
+</body>
+
+</html>
