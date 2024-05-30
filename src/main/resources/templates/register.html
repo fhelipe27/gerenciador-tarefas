@@ -23,6 +23,25 @@
         background-repeat: no-repeat;
         background-position: center;
     }
+
+    .register-container {
+        min-height: 500px; /* Definindo uma altura mínima */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card {
+        width: 400px;
+        background-color: rgba(11, 0, 48, 0.8);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .alert, .text-success {
+        margin-bottom: 20px; /* Adicionando margem para separar alertas do formulário */
+    }
 </style>
 
 <body>
@@ -30,38 +49,39 @@
     <div id="content-wrap">
 
         <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-            <div class="card p-4 text-white"
-                 style="width: 400px; height: 450px; background-color: rgba(11, 0, 48, 0.8); box-shadow: 0 4px 10px rgba(0, 0, 0, 1);">
-                <h3 class="text-center mb-4">Registre-se</h3>
-
+            <div class="register-container">
                 <div th:if="${session.msg}">
-                    <p class="text-center fs-4 text-success" th:text="${session.msg}"></p>
+                    <p class="text-center fs-4 alert alert-secondary" th:text="${session.msg}"></p>
                     <th:block th:utext="${@sessionUtilityBean.removeMessageFromSession()}"></th:block>
                 </div>
 
+                <div class="card text-white">
 
-                <form action="createGrupo" method="post">
-                    <div class="form-group">
-                        <label for="nome">Nome</label>
-                        <input type="text" class="form-control mt-2 mb-3" id="nome" name="nome"
-                               placeholder="Digite seu nome" required>
+                    <h3 class="text-center mb-4">Registre-se</h3>
+
+                    <form action="createGrupo" method="post">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control mt-2 mb-3" id="nome" name="nome"
+                                   placeholder="Digite seu nome" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="email">Endereço de E-mail</label>
+                            <input type="email" class="form-control mt-2 mb-3" id="email" name="email"
+                                   placeholder="Digite seu email" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="senha">Senha</label>
+                            <input type="password" class="form-control mt-2" id="senha" name="senha"
+                                   placeholder="Digite sua senha" required>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary btn-block mt-3">Registrar</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-4">
+                        <a class="text-white" th:href="@{/signin}">Fazer Login</a>
                     </div>
-                    <div class="form-group mt-3">
-                        <label for="email">Endereço de E-mail</label>
-                        <input type="text" class="form-control mt-2 mb-3" id="email" name="email"
-                               placeholder="Digite seu email" required>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="senha">Senha</label>
-                        <input type="password" class="form-control mt-2" id="senha" name="senha"
-                               placeholder="Digite sua senha" required>
-                    </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-primary btn-block mt-3">Registrar</button>
-                    </div>
-                </form>
-                <div class="text-center mt-4">
-                    <a class="text-white" th:href="@{/signin}">Fazer Login</a>
                 </div>
             </div>
         </div>

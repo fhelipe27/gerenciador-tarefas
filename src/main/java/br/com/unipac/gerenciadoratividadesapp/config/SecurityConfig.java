@@ -45,14 +45,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasRole("USER")
-                        .requestMatchers("/**").permitAll()
+                        .requestMatchers("/register", "/login", "/signin", "/createGrupo", "/").permitAll()
+                        .requestMatchers("/static/**", "/styles/**", "/js/**", "/images/**", "/webjars/**", "/templates", "/assets").permitAll()
+                        .anyRequest().authenticated() // Qualquer outra requisição precisa estar autenticada
                 )
                 .formLogin(form -> form
                         .loginPage("/signin")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/")
+                        .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 .csrf(csrf -> csrf.disable());
