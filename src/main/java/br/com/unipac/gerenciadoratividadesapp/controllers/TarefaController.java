@@ -58,10 +58,18 @@ public class TarefaController {
         return mv;
     }
 
+    // deleta da lista de atividades
     @GetMapping("/deletar/{id}")
     public String deletar(@PathVariable("id") Long id) {
         tarefaService.deletarPorId(id);
         return "redirect:/tarefa/lista-atividades";
+    }
+
+    // deleta da lista de atividades concluidas
+    @GetMapping("/deletarConcluida/{id}")
+    public String deletarConcluida(@PathVariable("id") Long id) {
+        tarefaService.deletarPorId(id);
+        return "redirect:/tarefa/lista-atividades-concluidas";
     }
 
     @PostMapping("/criar-atividade")
