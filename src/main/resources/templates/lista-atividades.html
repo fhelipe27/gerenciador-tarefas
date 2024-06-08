@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="pt-br">
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="pt-br">
 
 <head>
     <meta charset="utf-8"/>
@@ -36,7 +36,8 @@
                         <li class="nav-item"><a class="nav-link" th:href="@{/servicos}">Serviços</a></li>
                         <li class="nav-item"><a class="nav-link" th:href="@{/contato}">Contato</a></li>
                         <li class="nav-item"><a class="nav-link" th:href="@{/sobre}">Sobre</a></li>
-                        <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                        <li class="nav-item"><a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a></li>
+                        <li class="nav-item"><a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/signin}">Entrar</a></li>
                     </ul>
                 </div>
             </div>
@@ -71,7 +72,7 @@
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataFinal, 'dd/MM/yyyy')}"></span></td>
                     <td class="align-middle">
                         <form th:action="@{'/tarefa/marcar-concluida/' + ${tarefa.idTarefa}}" method="post">
-                            <button type="submit" class="btn btn-success"><i class="bi bi bi-check"></i></button>
+                            <button type="submit" class="btn btn-success"><i class="bi bi-check"></i></button>
                         </form>
 
                     </td>

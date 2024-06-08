@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="pt-br">
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="pt-br">
 
 <head>
     <meta charset="utf-8"/>
@@ -36,7 +36,8 @@
                         <li class="nav-item"><a class="nav-link" th:href="@{/servicos}">Serviços</a></li>
                         <li class="nav-item"><a class="nav-link" th:href="@{/contato}">Contato</a></li>
                         <li class="nav-item"><a class="nav-link" th:href="@{/sobre}">Sobre</a></li>
-                        <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                        <li class="nav-item"><a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a></li>
+                        <li class="nav-item"><a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/signin}">Entrar</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,6 +54,7 @@
                                 maneira simples.</h1>
                             <p class="lead text-white-50 mb-4">De maneira prática, rápida e simples!</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                <a sec:authorize="isAnonymous()" class="btn btn-primary btn-lg px-4 me-sm-3" th:href="@{/signin}">Entrar</a>
                                 <a class="btn btn-outline-light btn-lg px-4" href="#features">Saiba Mais</a>
                             </div>
                         </div>

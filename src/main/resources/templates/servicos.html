@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="pt-br">
+<html xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="pt-br">
 
 <head>
     <meta charset="utf-8"/>
@@ -35,7 +35,8 @@
                         <li class="nav-item"><a class="nav-link active" th:href="@{/servicos}">Serviços</a></li>
                         <li class="nav-item"><a class="nav-link" th:href="@{/contato}">Contato</a></li>
                         <li class="nav-item"><a class="nav-link" th:href="@{/sobre}">Sobre</a></li>
-                        <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                        <li class="nav-item"><a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">Logout</a></li>
+                        <li class="nav-item"><a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/signin}">Entrar</a></li>
                     </ul>
                 </div>
             </div>
@@ -101,7 +102,7 @@
                         <div class="card h-100">
                             <div class="card-body text-center">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
-                                        class="bi bi-clock-fill"></i></div>
+                                        class="bi bi-check"></i></div>
                                 <h2 class="h4 fw-bolder">Lista de Atividades Concluídas</h2>
                                 <p class="card-text">Mantenha um registro claro e organizado de todas as atividades que foram finalizadas pela equipe. A lista de atividades concluídas ajuda a monitorar o progresso, celebrar as conquistas e analisar o desempenho ao longo do tempo, garantindo que cada meta alcançada seja reconhecida e documentada de maneira clara e eficiente para todo o grupo.</p>
                             </div>
