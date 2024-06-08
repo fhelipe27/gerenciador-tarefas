@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,11 +38,16 @@ public class TarefaController {
     public ModelAndView listaAtividades(Principal principal) {
         ModelAndView mv = new ModelAndView("lista-atividades");
         String email = principal.getName();
-        Grupo grupo = grupoService.findByEmail(email); // Busca o grupo pelo email do usuário autenticado
-        mv.addObject("tarefas", tarefaService.buscarPorGrupo(grupo)); // Busca tarefas apenas do grupo
+        Grupo grupo = grupoService.findByEmail(email);
+        List<Tarefa> tarefasNaoConcluidas = tarefaService.buscarPorGrupo(grupo)
+                .stream()
+                .filter(tarefa -> !Boolean.TRUE.equals(tarefa.getIsConcluida()))
+                .collect(Collectors.toList());
+        mv.addObject("tarefas", tarefasNaoConcluidas);
         mv.addObject("tarefa", new Tarefa());
         return mv;
     }
+
 
     @GetMapping("/editar-atividade/{id}")
     public ModelAndView editar(@PathVariable("id") Long id) {
