@@ -25,13 +25,4 @@ public class NavigationController {
         return "contato";
     }
 
-//    @GetMapping("/login")
-//    public String login() {
-//        return "login";
-//    }
-//
-//    @GetMapping("/cadastro")
-//    public String cadastro() {
-//        return "cadastro";
-//    }
 }

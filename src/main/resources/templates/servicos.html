@@ -42,8 +42,7 @@
         </nav>
 
         <!-- Section Serviços -->
-
-        <section class="" id="features">
+        <section id="features">
             <div class="text-center">
                 <div class="feature bg-primary bg-gradient text-white rounded-3 my-5">
                     <i class="bi bi-search"></i>
@@ -51,54 +50,29 @@
             </div>
             <h2 class="text-center fw-bold">Explore Nossos Recursos</h2>
             <div class="container px-5 my-5 mx-auto">
-                <div class="row gx-5">
+                <div class="row gx-5 justify-content-center">
 
-                    <div class="col-lg-3 mb-5 mb-lg-0">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
                         <div class="card h-100">
                             <div class="card-body text-center bg-gradient">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
                                         class="bi bi-plus-circle-fill"></i></div>
                                 <h2 class="h4 fw-bolder">Criar Atividades</h2>
-                                <p class="card-text">Dê o pontapé inicial para a produtividade do seu grupo. Crie novas
-                                    atividades, compartilhe ideias e mantenha todos na mesma página com a funcionalidade
-                                    fácil de criação de tarefas.</p>
+                                <p class="card-text">Dê o pontapé inicial para a produtividade do seu grupo. Com a funcionalidade de criação de atividades, você pode facilmente definir novas tarefas e objetivos, garantindo que cada membro da equipe saiba exatamente o que precisa ser feito. Compartilhe ideias de maneira clara e mantenha todos na mesma página.
+                                </p>
                             </div>
                             <a th:href="@{/tarefa/criar-atividade}"
                                class="card-footer text-center bg-primary text-white text-decoration-none"
                                onmouseover="this.classList.add('text-decoration-underline')"
                                onmouseout="this.classList.remove('text-decoration-underline')">
-                            <span class="text-decoration-none">
-                                Explorar <i class="bi bi-arrow-right"></i>
-                            </span>
+                        <span class="text-decoration-none">
+                            Explorar <i class="bi bi-arrow-right"></i>
+                        </span>
                             </a>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 mb-5 mb-lg-0">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
-                                        class="bi bi-pencil-fill"></i></div>
-                                <h2 class="h4 fw-bolder">Editar Atividades</h2>
-                                <p class="card-text">Mantenha-se flexível e no controle total das suas tarefas. Com a
-                                    funcionalidade de edição de atividades, você pode ajustar detalhes, adicionar
-                                    informações
-                                    importantes e adaptar-se às mudanças, garantindo que sua equipe esteja sempre
-                                    alinhada com
-                                    os objetivos.</p>
-                            </div>
-                            <a th:href="@{/tarefa/editar-atividade-sem-id}"
-                               class="card-footer text-center bg-primary text-white text-decoration-none"
-                               onmouseover="this.classList.add('text-decoration-underline')"
-                               onmouseout="this.classList.remove('text-decoration-underline')">
-                            <span class="text-decoration-none">
-                                Explorar <i class="bi bi-arrow-right"></i>
-                            </span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 mb-5 mb-lg-0">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
                         <div class="card h-100">
                             <div class="card-body text-center">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
@@ -116,41 +90,34 @@
                                class="card-footer text-center bg-primary text-white text-decoration-none"
                                onmouseover="this.classList.add('text-decoration-underline')"
                                onmouseout="this.classList.remove('text-decoration-underline')">
-                            <span class="text-decoration-none">
-                                Explorar <i class="bi bi-arrow-right"></i>
-                            </span>
+                        <span class="text-decoration-none">
+                            Explorar <i class="bi bi-arrow-right"></i>
+                        </span>
                             </a>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 mb-5 mb-lg-0">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
                         <div class="card h-100">
                             <div class="card-body text-center">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
                                         class="bi bi-clock-fill"></i></div>
-                                <h2 class="h4 fw-bolder">Lista de Usuários</h2>
-                                <p class="card-text">Conheça sua equipe de forma abrangente. A lista de usuários oferece
-                                    uma
-                                    visão completa dos membros do seu grupo, facilitando a comunicação, atribuição de
-                                    tarefas e
-                                    a compreensão das habilidades individuais. Este recurso promove a colaboração e a
-                                    eficiência
-                                    em todos os níveis.</p>
+                                <h2 class="h4 fw-bolder">Lista de Atividades Concluídas</h2>
+                                <p class="card-text">Mantenha um registro claro e organizado de todas as atividades que foram finalizadas pela equipe. A lista de atividades concluídas ajuda a monitorar o progresso, celebrar as conquistas e analisar o desempenho ao longo do tempo, garantindo que cada meta alcançada seja reconhecida e documentada de maneira clara e eficiente para todo o grupo.</p>
                             </div>
-                            <a href="servicos.html"
+                            <a th:href="@{/tarefa/lista-atividades-concluidas}"
                                class="card-footer text-center bg-primary text-white text-decoration-none"
                                onmouseover="this.classList.add('text-decoration-underline')"
                                onmouseout="this.classList.remove('text-decoration-underline')">
-                            <span class="text-decoration-none">
-                                Explorar <i class="bi bi-arrow-right"></i>
-                            </span>
+                        <span class="text-decoration-none">
+                            Explorar <i class="bi bi-arrow-right"></i>
+                        </span>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
     <!-- Footer-->
     <footer class="bg-dark text-white text-center footer-padrao d-flex align-items-center">
         <div class="container">
@@ -172,6 +139,7 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</div>
 </div>
 </body>
 

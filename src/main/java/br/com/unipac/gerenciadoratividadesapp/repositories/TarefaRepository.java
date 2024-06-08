@@ -8,4 +8,7 @@ import java.util.List;
 
 public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
     List<Tarefa> findByGrupo(Grupo grupo);
+
+    List<Tarefa> findByGrupoAndIsConcluida(Grupo grupo, boolean isConcluida);
+
 }

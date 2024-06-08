@@ -58,9 +58,6 @@
                     <th scope="col">Descrição</th>
                     <th scope="col">Data Início</th>
                     <th scope="col">Data Final</th>
-                    <th scope="col">Concluir</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Deletar</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,22 +66,6 @@
                     <td class="align-middle"><span th:text="${tarefa.descricao}"></span></td>
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataInicio, 'dd/MM/yyyy')}"></span></td>
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataFinal, 'dd/MM/yyyy')}"></span></td>
-                    <td class="align-middle">
-                        <form th:action="@{'/tarefa/marcar-concluida/' + ${tarefa.idTarefa}}" method="post">
-                            <button type="submit" class="btn btn-success"><i class="bi bi bi-check"></i></button>
-                        </form>
-
-                    </td>
-                    <td class="align-middle">
-                        <a th:href="@{'/tarefa/editar-atividade/' + ${tarefa.idTarefa}}">
-                            <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                        </a>
-                    </td>
-                    <td class="align-middle">
-                        <a th:href="@{'/tarefa/deletar/' + ${tarefa.idTarefa}}" onclick="return confirm('Tem certeza que deseja excluir este produto?')">
-                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </a>
-                    </td>
                 </tr>
                 </tbody>
             </table>

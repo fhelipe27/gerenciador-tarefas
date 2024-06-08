@@ -51,12 +51,6 @@ public class TarefaController {
         return mv;
     }
 
-    @GetMapping("/editar-atividade-sem-id")
-    public String editarSemId(Model model) {
-        model.addAttribute("tarefa", new Tarefa());
-        return "editar-atividade-sem-id";
-    }
-
     @GetMapping("/deletar/{id}")
     public String deletar(@PathVariable("id") Long id) {
         tarefaService.deletarPorId(id);
@@ -78,11 +72,32 @@ public class TarefaController {
         return "redirect:/tarefa/lista-atividades";
     }
 
+    // lista de atividades concluidas
+    @GetMapping("/lista-atividades-concluidas")
+    public ModelAndView showListaConcluida(Principal principal) {
+        ModelAndView mv = new ModelAndView("lista-atividades-concluidas");
+        String email = principal.getName();
+        Grupo grupo = grupoService.findByEmail(email);
+        mv.addObject("tarefas", tarefaService.buscarPorGrupoConcluidas(grupo)); // Utiliza um novo método para buscar tarefas concluídas
+        mv.addObject("tarefa", new Tarefa());
+        return mv;
+    }
+
+
+    @PostMapping("/marcar-concluida/{id}")
+    public String marcarConcluida(@PathVariable("id") Long id) {
+        tarefaService.marcarConcluida(id);
+        return "redirect:/tarefa/lista-atividades";
+    }
+
+
     // Controler para mudar formato da data de yyyy-mm-dd para dd/mm/yyyy
     @RequestMapping(value = "/tarefa/criar-atividade", method = RequestMethod.POST)
     public String saveTarefa(Model model, @ModelAttribute("tarefa") Tarefa tarefa) {
         model.addAttribute("tarefa", tarefa);
         return "datePicker/displayDate.html";
     }
+
+
 
 }

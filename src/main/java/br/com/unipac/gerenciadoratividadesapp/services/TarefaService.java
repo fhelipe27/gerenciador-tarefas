@@ -71,4 +71,23 @@ public class TarefaService {
         return tarefaRepository.findByGrupo(grupo);
     }
 
+    @Transactional
+    public void marcarConcluida(Long id) {
+        Optional<Tarefa> optionalTarefa = tarefaRepository.findById(id);
+        if (optionalTarefa.isPresent()) {
+            Tarefa tarefa = optionalTarefa.get();
+            tarefa.setIsConcluida(true);
+            tarefaRepository.save(tarefa);
+        } else {
+            throw new RuntimeException("Tarefa não encontrada para o ID: " + id);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Tarefa> buscarPorGrupoConcluidas(Grupo grupo) {
+        return tarefaRepository.findByGrupoAndIsConcluida(grupo, true);
+    }
+
+
+
 }

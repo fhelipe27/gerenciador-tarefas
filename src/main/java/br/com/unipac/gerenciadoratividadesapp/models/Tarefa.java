@@ -35,6 +35,9 @@ public class Tarefa {
     @Column(name = "data_final", length = 255)
     private Date dataFinal;
 
+    @Column(name = "concluida")
+    private Boolean isConcluida;
+
     @ManyToOne
     @JoinColumn(name = "grupo_id")
     private Grupo grupo;
