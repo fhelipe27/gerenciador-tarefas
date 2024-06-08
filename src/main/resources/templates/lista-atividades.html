@@ -66,8 +66,8 @@
                 <tr th:each="tarefa : ${tarefas}">
                     <td class="align-middle"><span th:text="${tarefa.nome}"></span></td>
                     <td class="align-middle"><span th:text="${tarefa.descricao}"></span></td>
-                    <td class="align-middle"><span th:text="${tarefa.dataInicio}"></span></td>
-                    <td class="align-middle"><span th:text="${tarefa.dataFinal}"></span></td>
+                    <td class="align-middle"><span th:text="${#dates.format(tarefa.dataInicio, 'dd/MM/yyyy')}"></span></td>
+                    <td class="align-middle"><span th:text="${#dates.format(tarefa.dataFinal, 'dd/MM/yyyy')}"></span></td>
                     <td class="align-middle">
                         <a th:href="@{'/tarefa/editar-atividade/' + ${tarefa.idTarefa}}">
                             <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>

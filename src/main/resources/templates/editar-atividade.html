@@ -70,13 +70,13 @@
                         <!-- Campo Data Inicio -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="dataInicio" type="date"
-                                   th:value="${tarefa.dataInicio}" maxlength="10" name="dataInicio" required/>
+                                   th:field="${tarefa.dataInicio}" maxlength="10" name="dataInicio" required/>
                             <label for="dataInicio">Data de Início</label>
                         </div>
 
                         <!-- Campo Data Final -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="dataFinal" type="date" th:value="${tarefa.dataFinal}"
+                            <input class="form-control" id="dataFinal" type="date" th:field="${tarefa.dataFinal}"
                                    name="dataFinal" required/>
                             <label for="dataFinal">Data Final</label>
                         </div>

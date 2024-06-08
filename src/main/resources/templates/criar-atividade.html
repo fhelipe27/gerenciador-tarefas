@@ -55,7 +55,7 @@
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
-                    <form class="formTarefa" method="POST" action="/tarefa/criar-atividade" th:object="${tarefa}">
+                    <form class="formTarefa" method="POST" th:action="@{/tarefa/criar-atividade}" th:object="${tarefa}">
 
                         <!-- ID -->
                         <input type="hidden" th:value="${tarefa.idTarefa}" name="id"/>
@@ -70,13 +70,13 @@
                         <!-- Campo Data Inicio -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="dataInicio" type="date"
-                                   th:value="${tarefa.dataInicio}" maxlength="10" name="dataInicio" required/>
+                                   th:field="${tarefa.dataInicio}" maxlength="10" name="dataInicio" required/>
                             <label for="dataInicio">Data de Início</label>
                         </div>
 
                         <!-- Campo Data Final -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="dataFinal" type="date" th:value="${tarefa.dataFinal}"
+                            <input class="form-control" id="dataFinal" type="date" th:field="${tarefa.dataFinal}"
                                    name="dataFinal" required/>
                             <label for="dataFinal">Data Final</label>
                         </div>

@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -24,11 +27,13 @@ public class Tarefa {
     @Column(name = "descricao", length = 255)
     private String descricao;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_inicio", length = 255)
-    private String dataInicio;
+    private Date dataInicio;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_final", length = 255)
-    private String dataFinal;
+    private Date dataFinal;
 
     @ManyToOne
     @JoinColumn(name = "grupo_id")

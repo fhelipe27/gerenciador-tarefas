@@ -78,4 +78,11 @@ public class TarefaController {
         return "redirect:/tarefa/lista-atividades";
     }
 
+    // Controler para mudar formato da data de yyyy-mm-dd para dd/mm/yyyy
+    @RequestMapping(value = "/tarefa/criar-atividade", method = RequestMethod.POST)
+    public String saveTarefa(Model model, @ModelAttribute("tarefa") Tarefa tarefa) {
+        model.addAttribute("tarefa", tarefa);
+        return "datePicker/displayDate.html";
+    }
+
 }
