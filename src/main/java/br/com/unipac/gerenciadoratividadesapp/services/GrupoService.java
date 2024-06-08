@@ -11,6 +11,9 @@ public interface GrupoService {
     public Grupo createGrupo(Grupo grupo);
 
     public boolean checkEmail(String email);
+
+
+    public Grupo findByEmail(String email);
 }
 
 

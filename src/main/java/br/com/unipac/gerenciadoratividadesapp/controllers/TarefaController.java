@@ -1,13 +1,17 @@
 package br.com.unipac.gerenciadoratividadesapp.controllers;
 
+import br.com.unipac.gerenciadoratividadesapp.models.Grupo;
 import br.com.unipac.gerenciadoratividadesapp.models.Tarefa;
+import br.com.unipac.gerenciadoratividadesapp.services.GrupoService;
 import br.com.unipac.gerenciadoratividadesapp.services.TarefaService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -16,17 +20,24 @@ import java.util.Optional;
 public class TarefaController {
 
     private final TarefaService tarefaService;
+    private final GrupoService grupoService;
 
     @GetMapping("/criar-atividade")
-    public String showForm(Model model) {
-        model.addAttribute("tarefa", new Tarefa());
+    public String showForm(Model model, Principal principal) {
+        String email = principal.getName();
+        Grupo grupo = grupoService.findByEmail(email); // Busca o grupo pelo email do usuário autenticado
+        Tarefa tarefa = new Tarefa();
+        tarefa.setGrupo(grupo);
+        model.addAttribute("tarefa", tarefa);
         return "criar-atividade";
     }
 
     @GetMapping("/lista-atividades")
-    public ModelAndView listaAtividades() {
+    public ModelAndView listaAtividades(Principal principal) {
         ModelAndView mv = new ModelAndView("lista-atividades");
-        mv.addObject("tarefas", tarefaService.buscarTodos());
+        String email = principal.getName();
+        Grupo grupo = grupoService.findByEmail(email); // Busca o grupo pelo email do usuário autenticado
+        mv.addObject("tarefas", tarefaService.buscarPorGrupo(grupo)); // Busca tarefas apenas do grupo
         mv.addObject("tarefa", new Tarefa());
         return mv;
     }
@@ -53,9 +64,12 @@ public class TarefaController {
     }
 
     @PostMapping("/criar-atividade")
-    public String criar(@ModelAttribute("tarefa") Tarefa tarefa) {
+    public String criar(@ModelAttribute("tarefa") Tarefa tarefa, Principal principal) {
+        String email = principal.getName();
+        Grupo grupo = grupoService.findByEmail(email); // Busca o grupo pelo email do usuário autenticado
+        tarefa.setGrupo(grupo); // Associa o grupo à tarefa
         tarefaService.salvarTarefa(tarefa);
-        return "redirect:/tarefa/criar-atividade";
+        return "redirect:/tarefa/lista-atividades";
     }
 
     @PostMapping("/editar-atividade/{id}")

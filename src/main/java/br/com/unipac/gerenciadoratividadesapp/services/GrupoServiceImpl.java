@@ -27,4 +27,9 @@ public class GrupoServiceImpl implements GrupoService {
     public boolean checkEmail(String email) {
         return grupoRepository.existsByEmail(email);
     }
+
+    @Override
+    public Grupo findByEmail(String email) {
+        return grupoRepository.findByEmail(email);
+    }
 }

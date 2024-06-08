@@ -1,5 +1,6 @@
 package br.com.unipac.gerenciadoratividadesapp.services;
 
+import br.com.unipac.gerenciadoratividadesapp.models.Grupo;
 import br.com.unipac.gerenciadoratividadesapp.models.Tarefa;
 import br.com.unipac.gerenciadoratividadesapp.repositories.TarefaRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,6 @@ public class TarefaService {
 
     private final TarefaRepository tarefaRepository;
 
-    // função para salvar tarefa
     @Transactional
     public Tarefa salvarTarefa(Tarefa tarefa) {
         try {
@@ -28,26 +28,21 @@ public class TarefaService {
         }
     }
 
-    // função para achar por id
     @Transactional(readOnly = true)
     public Optional<Tarefa> buscarPorId(Long id) {
-            return tarefaRepository.findById(id);
+        return tarefaRepository.findById(id);
     }
 
-    // função para achar todos
     @Transactional(readOnly = true)
     public List<Tarefa> buscarTodos() {
-            return tarefaRepository.findAll();
+        return tarefaRepository.findAll();
     }
 
-    // função para deletar por id
     @Transactional
     public void deletarPorId(Long id) {
         tarefaRepository.deleteById(id);
     }
 
-
-    // função para editar por id
     @Transactional
     public Tarefa editarPorId(Long id, Tarefa tarefaAtualizada) {
         try {
@@ -70,4 +65,10 @@ public class TarefaService {
             throw new RuntimeException("Erro ao editar a tarefa por ID", e);
         }
     }
+
+    @Transactional(readOnly = true)
+    public List<Tarefa> buscarPorGrupo(Grupo grupo) {
+        return tarefaRepository.findByGrupo(grupo);
+    }
+
 }
