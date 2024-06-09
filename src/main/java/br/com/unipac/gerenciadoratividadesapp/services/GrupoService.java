@@ -12,7 +12,6 @@ public interface GrupoService {
 
     public boolean checkEmail(String email);
 
-
     public Grupo findByEmail(String email);
 }
 

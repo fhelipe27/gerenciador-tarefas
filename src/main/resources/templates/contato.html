@@ -55,64 +55,45 @@
                 <div class="col-lg-6">
                     <form action="https://formsubmit.co/ab32c698c096a70a61f1811c5d9267f3" id="contactForm"
                           method="POST">
+
                         <!-- Input de Nome -->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="name" name="name" type="text" placeholder=""
-                                   data-sb-validations="required"/>
+                            <input class="form-control" id="name" name="name" placeholder="" required
+                                   type="text"/>
                             <label for="name">Nome Completo</label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">É preciso digitar um nome.
-                            </div>
                         </div>
 
                         <!-- Input de Email-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="email" name="email" type="email" placeholder=""
-                                   data-sb-validations="required,email"/>
+                            <input class="form-control" id="email" name="email" type="email" placeholder="" required
+                            />
                             <label for="email">Endereço de Email</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">É preciso digitar um
-                                Email.
-                            </div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email não é válido.</div>
                         </div>
+
 
                         <!-- Input de Assunto -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="subject" name="subject" type="text"
-                                   placeholder="Digite o assunto."
-                                   data-sb-validations="required"/>
+                                   placeholder="" required
+                            />
                             <label for="subject">Assunto</label>
-                            <div class="invalid-feedback" data-sb-feedback="subject:required">É preciso digitar um
-                                assunto.
-                            </div>
                         </div>
 
                         <!-- Input de Mensagem -->
                         <div class="form-floating mb-3">
-            <textarea class="form-control" id="message" name="message" type="text" placeholder=""
-                      style="height: 10rem" data-sb-validations="required"></textarea>
+            <textarea class="form-control" id="message" name="message" type="text" placeholder="" required
+                      style="height: 10rem"></textarea>
                             <label for="message">Mensagem</label>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">É preciso digitar uma
-                                mensagem.
-                            </div>
                         </div>
 
                         <!-- Remover captcha para abrir e-mail (referente a api de envia emails)-->
                         <input type="hidden" name="_captcha" value="false">
 
-                        <!-- Mensagem de envio com sucesso -->
+                        <!-- Redirecionamento após enviar mensagem/mensagem de sucesso -->
                         <input type="hidden" name="_next" value="http://localhost:8080/contatoconfirmado">
 
-                        <!-- Redirecionamento após enviar mensagem -->
-                        <div class="d-none" id="submitErrorMessage">
-                            <div class="text-center text-danger mb-3">Erro ao enviar mensagem!</div>
-                        </div>
-
-                        <!-- Mensagem de envio com sucesso -->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Enviado com sucesso!</div>
-                            </div>
-                        </div>
+                        <!-- Mudança no template do email -->
+                        <input type="hidden" name="_template" value="table">
 
                         <!-- Botão de Envio -->
                         <div class="d-grid">
