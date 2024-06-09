@@ -51,49 +51,49 @@
                 <h2 class="fw-bolder">Fale conosco!</h2>
                 <p class="lead mb-0">Envie uma mensagem para nós!</p>
             </div>
+
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
-                    <form action="https://formsubmit.co/ab32c698c096a70a61f1811c5d9267f3" id="contactForm"
-                          method="POST">
+                    <form action="https://formsubmit.co/ab32c698c096a70a61f1811c5d9267f3" id="contactForm" method="POST">
+
+                        <!-- Mensagem de sucesso -->
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            E-mail enviado com sucesso!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
                         <!-- Input de Nome -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="name" name="name" type="text" placeholder=""
-                                   data-sb-validations="required"/>
+                                   data-sb-validations="required" />
                             <label for="name">Nome Completo</label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">É preciso digitar um nome.
-                            </div>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">É preciso digitar um nome.</div>
                         </div>
 
-                        <!-- Input de Email-->
+
+                        <!-- Input de Email -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="email" name="email" type="email" placeholder=""
-                                   data-sb-validations="required,email"/>
+                                   data-sb-validations="required,email" />
                             <label for="email">Endereço de Email</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">É preciso digitar um
-                                Email.
-                            </div>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">É preciso digitar um Email.</div>
                             <div class="invalid-feedback" data-sb-feedback="email:email">Email não é válido.</div>
                         </div>
 
                         <!-- Input de Assunto -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="subject" name="subject" type="text"
-                                   placeholder="Digite o assunto."
-                                   data-sb-validations="required"/>
+                                   placeholder="Digite o assunto." data-sb-validations="required" />
                             <label for="subject">Assunto</label>
-                            <div class="invalid-feedback" data-sb-feedback="subject:required">É preciso digitar um
-                                assunto.
-                            </div>
+                            <div class="invalid-feedback" data-sb-feedback="subject:required">É preciso digitar um assunto.</div>
                         </div>
 
                         <!-- Input de Mensagem -->
                         <div class="form-floating mb-3">
-            <textarea class="form-control" id="message" name="message" type="text" placeholder=""
-                      style="height: 10rem" data-sb-validations="required"></textarea>
+                    <textarea class="form-control" id="message" name="message" type="text" placeholder=""
+                              style="height: 10rem" data-sb-validations="required"></textarea>
                             <label for="message">Mensagem</label>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">É preciso digitar uma
-                                mensagem.
-                            </div>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">É preciso digitar uma mensagem.</div>
                         </div>
 
                         <!-- Remover captcha para abrir e-mail (referente a api de envia emails)-->
@@ -107,24 +107,15 @@
                             <div class="text-center text-danger mb-3">Erro ao enviar mensagem!</div>
                         </div>
 
-                        <!-- Mensagem de envio com sucesso -->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Enviado com sucesso!</div>
-                            </div>
-                        </div>
-
                         <!-- Botão de Envio -->
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar
-                            </button>
+                            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button>
                         </div>
                     </form>
-
-
                 </div>
             </div>
         </div>
+
 
         <!-- Redes Sociais -->
         <h2 class="fw-bolder text-center">Ou nossas redes sociais:</h2>
