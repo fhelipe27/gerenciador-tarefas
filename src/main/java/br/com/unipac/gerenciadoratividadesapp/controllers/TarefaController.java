@@ -105,6 +105,11 @@ public class TarefaController {
         return "redirect:/tarefa/lista-atividades";
     }
 
+    @PostMapping("/desmarcar-concluida/{id}")
+    public String desmarcarConcluida(@PathVariable("id") Long id) {
+        tarefaService.desmarcarConcluida(id);
+        return "redirect:/tarefa/lista-atividades-concluidas";
+    }
 
     // Controler para mudar formato da data de yyyy-mm-dd para dd/mm/yyyy
     @RequestMapping(value = "/tarefa/criar-atividade", method = RequestMethod.POST)

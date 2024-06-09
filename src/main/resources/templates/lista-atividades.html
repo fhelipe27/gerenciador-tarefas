@@ -71,7 +71,7 @@
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataInicio, 'dd/MM/yyyy')}"></span></td>
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataFinal, 'dd/MM/yyyy')}"></span></td>
                     <td class="align-middle">
-                        <form th:action="@{'/tarefa/marcar-concluida/' + ${tarefa.idTarefa}}" method="post">
+                        <form th:action="@{'/tarefa/marcar-concluida/' + ${tarefa.idTarefa}}" method="POST">
                             <button type="submit" class="btn btn-success"><i class="bi bi-check"></i></button>
                         </form>
 
