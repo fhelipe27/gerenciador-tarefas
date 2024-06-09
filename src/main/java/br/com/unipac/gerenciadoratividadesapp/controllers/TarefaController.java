@@ -42,6 +42,7 @@ public class TarefaController {
         List<Tarefa> tarefasNaoConcluidas = tarefaService.buscarPorGrupo(grupo)
                 .stream()
                 .filter(tarefa -> !Boolean.TRUE.equals(tarefa.getIsConcluida()))
+                .filter(tarefa -> !Boolean.TRUE.equals(tarefa.getIsRemovida()))
                 .collect(Collectors.toList());
         mv.addObject("tarefas", tarefasNaoConcluidas);
         mv.addObject("tarefa", new Tarefa());
@@ -93,7 +94,17 @@ public class TarefaController {
         ModelAndView mv = new ModelAndView("lista-atividades-concluidas");
         String email = principal.getName();
         Grupo grupo = grupoService.findByEmail(email);
-        mv.addObject("tarefas", tarefaService.buscarPorGrupoConcluidas(grupo)); // Utiliza um novo método para buscar tarefas concluídas
+        mv.addObject("tarefas", tarefaService.buscarPorGrupoConcluidas(grupo));
+        mv.addObject("tarefa", new Tarefa());
+        return mv;
+    }
+
+    @GetMapping("/lista-atividades-removidas")
+    public ModelAndView showListaRemovida(Principal principal) {
+        ModelAndView mv = new ModelAndView("lista-atividades-removidas");
+        String email = principal.getName();
+        Grupo grupo = grupoService.findByEmail(email);
+        mv.addObject("tarefas", tarefaService.buscarPorGrupoRemovidas(grupo));
         mv.addObject("tarefa", new Tarefa());
         return mv;
     }
@@ -111,12 +122,32 @@ public class TarefaController {
         return "redirect:/tarefa/lista-atividades-concluidas";
     }
 
+    @PostMapping("/marcar-removida/{id}")
+    public String marcarRemovida(@PathVariable("id") Long id) {
+        tarefaService.marcarRemovida(id);
+        return "redirect:/tarefa/lista-atividades";
+    }
+
+    @PostMapping("/desmarcar-removida/{id}")
+    public String desmarcarRemovida(@PathVariable("id") Long id) {
+        tarefaService.desmarcarRemovida(id);
+        return "redirect:/tarefa/lista-atividades-removidas";
+    }
+
+    @PostMapping("/desmarcar-concluida-removidas/{id}")
+    public String desmarcarConcluidaRemovidas(@PathVariable("id") Long id) {
+        tarefaService.desmarcarConcluida(id);
+        return "redirect:/tarefa/lista-atividades-removidas";
+    }
+
     // Controler para mudar formato da data de yyyy-mm-dd para dd/mm/yyyy
     @RequestMapping(value = "/tarefa/criar-atividade", method = RequestMethod.POST)
     public String saveTarefa(Model model, @ModelAttribute("tarefa") Tarefa tarefa) {
         model.addAttribute("tarefa", tarefa);
         return "datePicker/displayDate.html";
     }
+
+
 
 
 

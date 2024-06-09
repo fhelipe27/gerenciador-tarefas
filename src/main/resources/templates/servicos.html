@@ -53,13 +53,13 @@
             <div class="container px-5 my-5 mx-auto">
                 <div class="row gx-5 justify-content-center">
 
-                    <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="col-lg-3 mb-5 mb-lg-0">
                         <div class="card h-100">
                             <div class="card-body text-center bg-gradient">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
                                         class="bi bi-plus-circle-fill"></i></div>
                                 <h2 class="h4 fw-bolder">Criar Atividades</h2>
-                                <p class="card-text">Dê o pontapé inicial para a produtividade do seu grupo. Com a funcionalidade de criação de atividades, você pode facilmente definir novas tarefas e objetivos, garantindo que cada membro da equipe saiba exatamente o que precisa ser feito. Compartilhe ideias de maneira clara e mantenha todos na mesma página.
+                                <p class="card-text">Dê o pontapé inicial para a produtividade do seu grupo. Com a funcionalidade de criação de atividades, você pode facilmente definir novas tarefas e objetivos, garantindo que cada membro da equipe saiba exatamente o que precisa ser feito. Compartilhe ideias de maneira clara, mantenha todos na mesma página, assegurando que ninguém fique por fora.
                                 </p>
                             </div>
                             <a th:href="@{/tarefa/criar-atividade}"
@@ -73,7 +73,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="col-lg-3 mb-5 mb-lg-0">
                         <div class="card h-100">
                             <div class="card-body text-center">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
@@ -85,7 +85,7 @@
                                     permitindo
                                     uma gestão eficaz do tempo e recursos. Mantenha-se informado e no controle,
                                     garantindo que
-                                    cada membro da equipe esteja focado nas prioridades certas.</p>
+                                    cada membro da equipe esteja focado nas prioridades certas e por dentro de todas as atividades.</p>
                             </div>
                             <a th:href="@{/tarefa/lista-atividades}"
                                class="card-footer text-center bg-primary text-white text-decoration-none"
@@ -98,15 +98,34 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="col-lg-3 mb-5 mb-lg-0">
                         <div class="card h-100">
                             <div class="card-body text-center">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
                                         class="bi bi-check"></i></div>
-                                <h2 class="h4 fw-bolder">Lista de Atividades Concluídas</h2>
+                                <h2 class="h4 fw-bolder">Lista de Concluídas</h2>
                                 <p class="card-text">Mantenha um registro claro e organizado de todas as atividades que foram finalizadas pela equipe. A lista de atividades concluídas ajuda a monitorar o progresso, celebrar as conquistas e analisar o desempenho ao longo do tempo, garantindo que cada meta alcançada seja reconhecida e documentada de maneira clara e eficiente para todo o grupo.</p>
                             </div>
                             <a th:href="@{/tarefa/lista-atividades-concluidas}"
+                               class="card-footer text-center bg-primary text-white text-decoration-none"
+                               onmouseover="this.classList.add('text-decoration-underline')"
+                               onmouseout="this.classList.remove('text-decoration-underline')">
+                        <span class="text-decoration-none">
+                            Explorar <i class="bi bi-arrow-right"></i>
+                        </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 mb-5 mb-lg-0">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i
+                                        class="bi bi bi-trash"></i></div>
+                                <h2 class="h4 fw-bolder">Lista de Removidas</h2>
+                                <p class="card-text">Mantenha o controle das atividades que foram descartadas ou removidas do fluxo de trabalho. A lista de atividades removidas permite que você monitore decisões e mudanças no planejamento, oferecendo um histórico das tarefas que foram consideradas, mas não concluídas, evitando assim redundâncias e alocação de recursos no futuro.</p>
+                            </div>
+                            <a th:href="@{/tarefa/lista-atividades-removidas}"
                                class="card-footer text-center bg-primary text-white text-decoration-none"
                                onmouseover="this.classList.add('text-decoration-underline')"
                                onmouseout="this.classList.remove('text-decoration-underline')">

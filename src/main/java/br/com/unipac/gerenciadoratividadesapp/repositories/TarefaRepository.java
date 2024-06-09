@@ -11,4 +11,7 @@ public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 
     List<Tarefa> findByGrupoAndIsConcluida(Grupo grupo, boolean isConcluida);
 
+    List<Tarefa> findByGrupoAndIsRemovida(Grupo grupo, boolean isRemovida);
+
+
 }

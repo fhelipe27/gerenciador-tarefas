@@ -38,6 +38,9 @@ public class Tarefa {
     @Column(name = "concluida")
     private Boolean isConcluida;
 
+    @Column(name = "removida")
+    private Boolean isRemovida;
+
     @ManyToOne
     @JoinColumn(name = "grupo_id")
     private Grupo grupo;

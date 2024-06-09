@@ -77,6 +77,7 @@ public class TarefaService {
         if (optionalTarefa.isPresent()) {
             Tarefa tarefa = optionalTarefa.get();
             tarefa.setIsConcluida(true);
+            tarefa.setIsRemovida(false);
             tarefaRepository.save(tarefa);
         } else {
             throw new RuntimeException("Tarefa não encontrada para o ID: " + id);
@@ -89,10 +90,38 @@ public class TarefaService {
         if (optionalTarefa.isPresent()) {
             Tarefa tarefa = optionalTarefa.get();
             tarefa.setIsConcluida(false);
+            tarefa.setIsRemovida(false);
             tarefaRepository.save(tarefa);
         } else {
             throw new RuntimeException("Tarefa não encontrada para o ID: " + id);
         }
+    }
+
+    public void marcarRemovida(Long id) {
+        Optional<Tarefa> optionalTarefa = tarefaRepository.findById(id);
+        if (optionalTarefa.isPresent()) {
+            Tarefa tarefa = optionalTarefa.get();
+            tarefa.setIsRemovida(true);
+            tarefaRepository.save(tarefa);
+        } else {
+            throw new RuntimeException("Tarefa não encontrada para o ID: " + id);
+        }
+    }
+
+    public void desmarcarRemovida(Long id) {
+        Optional<Tarefa> optionalTarefa = tarefaRepository.findById(id);
+        if (optionalTarefa.isPresent()) {
+            Tarefa tarefa = optionalTarefa.get();
+            tarefa.setIsRemovida(false);
+            tarefaRepository.save(tarefa);
+        } else {
+            throw new RuntimeException("Tarefa não encontrada para o ID: " + id);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Tarefa> buscarPorGrupoRemovidas(Grupo grupo) {
+        return tarefaRepository.findByGrupoAndIsRemovida(grupo, true);
     }
 
     @Transactional(readOnly = true)
