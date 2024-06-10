@@ -19,6 +19,13 @@ a:hover {
     color: white;
 }
 
+.table td {
+    word-wrap: break-word;
+    word-break: break-all;
+    max-width: 200px; /* Adjust as needed */
+    white-space: normal;
+}
+
 /* Estilos dos Cards Sociais */
 .card-contato {
     position: relative;
