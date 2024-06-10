@@ -61,7 +61,7 @@
                     <th scope="col">Data Final</th>
                     <th scope="col">Concluir</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Deletar</th>
+                    <th scope="col">Remover</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -71,7 +71,7 @@
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataInicio, 'dd/MM/yyyy')}"></span></td>
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataFinal, 'dd/MM/yyyy')}"></span></td>
                     <td class="align-middle">
-                        <form th:action="@{'/tarefa/marcar-concluida/' + ${tarefa.idTarefa}}" method="POST">
+                        <form th:action="@{'/tarefa/marcar-concluida/' + ${tarefa.idTarefa}}" method="POST" onclick="return confirm('Tem certeza que deseja concluir esta atividade??')">
                             <button type="submit" class="btn btn-success"><i class="bi bi-check"></i></button>
                         </form>
 
@@ -82,7 +82,7 @@
                         </a>
                     </td>
                     <td class="align-middle">
-                        <form th:action="@{'/tarefa/marcar-removida/' + ${tarefa.idTarefa}}" method="POST" onclick="return confirm('Tem certeza que deseja excluir esta atividade??')">
+                        <form th:action="@{'/tarefa/marcar-removida/' + ${tarefa.idTarefa}}" method="POST" onclick="return confirm('Tem certeza que deseja remover esta atividade??')">
                             <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </form>
                     </td>

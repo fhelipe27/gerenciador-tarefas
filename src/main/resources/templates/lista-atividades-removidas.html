@@ -60,7 +60,7 @@
                     <th scope="col">Data Início</th>
                     <th scope="col">Data Final</th>
                     <th scope="col">Relocar na Lista</th>
-                    <th scope="col">Deletar</th>
+                    <th scope="col">Remover</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,7 +75,7 @@
                         </form>
                     </td>
                     <td class="align-middle">
-                        <a th:href="@{'/tarefa/deletarConcluida/' + ${tarefa.idTarefa}}" onclick="return confirm('Tem certeza que deseja excluir esta atividade?')">
+                        <a th:href="@{'/tarefa/deletarRemovida/' + ${tarefa.idTarefa}}" onclick="return confirm('Tem certeza que deseja remover permanentemente esta atividade?')">
                             <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </a>
                     </td>

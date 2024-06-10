@@ -67,10 +67,10 @@ public class TarefaController {
     }
 
     // deleta da lista de atividades concluidas
-    @GetMapping("/deletarConcluida/{id}")
-    public String deletarConcluida(@PathVariable("id") Long id) {
+    @GetMapping("/deletarRemovida/{id}")
+    public String deletarRemovida(@PathVariable("id") Long id) {
         tarefaService.deletarPorId(id);
-        return "redirect:/tarefa/lista-atividades-concluidas";
+        return "redirect:/tarefa/lista-atividades-removidas";
     }
 
     @PostMapping("/criar-atividade")
