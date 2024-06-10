@@ -56,6 +56,7 @@
                 <thead class="table bg-primary text-white">
                 <tr>
                     <th scope="col">Nome da Atividade</th>
+                    <th scope="col">Responsável</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Data Início</th>
                     <th scope="col">Data Final</th>
@@ -67,6 +68,7 @@
                 <tbody>
                 <tr th:each="tarefa : ${tarefas}">
                     <td class="align-middle"><span th:text="${tarefa.nome}"></span></td>
+                    <td class="align-middle"><span th:text="${tarefa.responsavel}"></span></td>
                     <td class="align-middle"><span th:text="${tarefa.descricao}"></span></td>
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataInicio, 'dd/MM/yyyy')}"></span></td>
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataFinal, 'dd/MM/yyyy')}"></span></td>

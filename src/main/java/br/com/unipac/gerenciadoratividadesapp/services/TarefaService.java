@@ -53,6 +53,7 @@ public class TarefaService {
 
                 // atualiza os campos do produto existente com os valores do produto atualizado
                 tarefaExistente.setNome(tarefaAtualizada.getNome());
+                tarefaExistente.setResponsavel(tarefaAtualizada.getResponsavel());
                 tarefaExistente.setDescricao(tarefaAtualizada.getDescricao());
                 tarefaExistente.setDataInicio(tarefaAtualizada.getDataInicio());
                 tarefaExistente.setDataFinal(tarefaAtualizada.getDataFinal());

@@ -68,6 +68,13 @@
                             <label for="nome">Nome da Tarefa</label>
                         </div>
 
+                        <!-- Campo Responsável -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="responsavel" type="text" placeholder="Nome do Responsável"
+                                   th:value="${tarefa.responsavel}" maxlength="50" name="responsavel" required/>
+                            <label for="nome">Nome do Responsável</label>
+                        </div>
+
                         <!-- Campo Data Inicio -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="dataInicio" type="date"

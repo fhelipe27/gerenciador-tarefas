@@ -41,6 +41,9 @@ public class Tarefa {
     @Column(name = "removida")
     private Boolean isRemovida;
 
+    @Column(name = "responsavel", length = 50)
+    private String responsavel;
+
     @ManyToOne
     @JoinColumn(name = "grupo_id")
     private Grupo grupo;
