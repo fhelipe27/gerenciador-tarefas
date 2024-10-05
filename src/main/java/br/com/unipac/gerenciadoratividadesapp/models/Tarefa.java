@@ -1,5 +1,6 @@
 package br.com.unipac.gerenciadoratividadesapp.models;
 
+import br.com.unipac.gerenciadoratividadesapp.utils.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +25,7 @@ public class Tarefa {
     @Column(name = "nome", length = 50)
     private String nome;
 
-    @Column(name = "descricao", length = 255)
+    @Column(name = "descricao", length = 1024)
     private String descricao;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -44,9 +45,14 @@ public class Tarefa {
     @Column(name = "responsavel", length = 50)
     private String responsavel;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status = Status.NOVA;
+
     @ManyToOne
     @JoinColumn(name = "grupo_id")
     private Grupo grupo;
 
 }
+
 
