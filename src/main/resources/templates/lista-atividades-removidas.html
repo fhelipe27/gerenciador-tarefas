@@ -52,7 +52,7 @@
 
         <!-- Lista de Atividades -->
         <div class="table-responsive">
-            <table class="table table-striped table-bordered text-center">
+            <table class="table table-striped table-bordered text-center mx-auto w-50 custom-border">
                 <thead class="table bg-primary text-white">
                 <tr style="background-color: #1A3B52;">
                     <th scope="col">Nome da Atividade</th>
@@ -69,7 +69,7 @@
                     </td>
                     <td class="align-middle"><span th:text="${tarefa.responsavel}"></span></td>
                     <td class="align-middle"><span th:text="${#dates.format(tarefa.dataFinal, 'dd/MM/yyyy')}"></span></td>
-                    <td class="align-middle">
+
 
                     </td>
                 </tr>
