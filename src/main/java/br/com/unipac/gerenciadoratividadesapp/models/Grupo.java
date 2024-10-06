@@ -20,12 +20,20 @@ public class Grupo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idGrupo;
 
+    @Column(name = "grupo_nome")
     private String nome;
+    @Column(name = "grupo_email")
     private String email;
+    @Column(name = "grupo_senha")
     private String senha;
+    @Column(name = "grupo_role")
     private String role;
 
     @OneToMany(mappedBy = "grupo")
+    @Column(name = "grupo_tarefas")
     private List<Tarefa> tarefas;
 
+    @OneToMany(mappedBy = "grupo")
+    @Column(name = "grupo_conquistas")
+    private List<GrupoConquista> grupoConquistas;
 }

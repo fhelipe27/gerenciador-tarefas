@@ -20,6 +20,7 @@ public class Tarefa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tarefa_id")
     private Long idTarefa;
 
     @Column(name = "nome", length = 50)

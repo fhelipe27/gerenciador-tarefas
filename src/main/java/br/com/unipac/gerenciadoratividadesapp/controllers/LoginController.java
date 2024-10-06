@@ -43,6 +43,7 @@ public class LoginController {
             Grupo grupo = grupoService.createGrupo(grupo1);
             if (grupo != null) {
                 session.setAttribute("msg", "Registrado com sucesso!");
+
             } else {
                 session.setAttribute("msg", "Deu algo errado no servidor!");
             }

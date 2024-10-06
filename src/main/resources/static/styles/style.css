@@ -240,6 +240,17 @@ a:hover {
     visibility: visible;
 }
 
+.explorar-verde {
+    background-color: green;
+    color: white;
+}
+
+.explorar-cinza {
+    background-color: gray;
+    color: white;
+}
+
+
 /* Misc */
 .suas-atividades {
     height: 453px;
