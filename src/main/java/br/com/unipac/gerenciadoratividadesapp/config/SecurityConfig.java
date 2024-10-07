@@ -1,8 +1,10 @@
 package br.com.unipac.gerenciadoratividadesapp.config;
 
+import br.com.unipac.gerenciadoratividadesapp.security.CustomLogoutSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,6 +17,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Autowired
+    @Lazy
+    private CustomLogoutSuccessHandler customLogoutSuccessHandler;
 
     @Bean
     public UserDetailsService getUserDetailsService() {
@@ -35,7 +41,6 @@ public class SecurityConfig {
         return daoAuthenticationProvider;
     }
 
-
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class).build();
@@ -53,6 +58,10 @@ public class SecurityConfig {
                         .loginPage("/signin")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/", true)
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutSuccessHandler(customLogoutSuccessHandler)
                         .permitAll()
                 )
                 .csrf(csrf -> csrf.disable());
