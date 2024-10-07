@@ -57,7 +57,7 @@
             </div>
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
-                    <form class="formTarefa" method="POST" th:action="@{/tarefa/criar-atividade}" th:object="${tarefa}">
+                    <form class="formTarefa" method="POST" th:action="@{/tarefa/criar-atividade}" th:object="${tarefa}" onsubmit="return validarDatas();">
 
                         <!-- ID -->
                         <input type="hidden" th:value="${tarefa.idTarefa}" name="id"/>
@@ -98,7 +98,7 @@
 
                         <!-- Botão de Envio -->
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-lg" type="submit">Cadastrar Tarefa</button>
+                            <button class="btn btn-primary btn" type="submit">Cadastrar Tarefa</button>
                         </div>
                     </form>
                 </div>
@@ -127,6 +127,7 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script th:src="@{/scripts/script.js}"></script>
 </div>
 </body>
 
