@@ -1,7 +1,11 @@
 package br.com.unipac.gerenciadoratividadesapp.services;
 
+import br.com.unipac.gerenciadoratividadesapp.models.Conquista;
 import br.com.unipac.gerenciadoratividadesapp.models.Grupo;
+import br.com.unipac.gerenciadoratividadesapp.models.GrupoConquista;
 import br.com.unipac.gerenciadoratividadesapp.models.Tarefa;
+import br.com.unipac.gerenciadoratividadesapp.repositories.ConquistaRepository;
+import br.com.unipac.gerenciadoratividadesapp.repositories.GrupoConquistaRepository;
 import br.com.unipac.gerenciadoratividadesapp.repositories.TarefaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -17,10 +21,40 @@ public class TarefaService {
 
     private final TarefaRepository tarefaRepository;
 
+    private final GrupoConquistaRepository grupoConquistaRepository;
+
+    private final ConquistaRepository conquistaRepository;
+
     @Transactional
     public Tarefa salvarTarefa(Tarefa tarefa) {
         try {
-            return tarefaRepository.save(tarefa);
+            Tarefa novaTarefa = tarefaRepository.save(tarefa);
+
+            // Verifica se é a primeira tarefa do grupo
+            Grupo grupo = tarefa.getGrupo();
+            List<Tarefa> tarefasDoGrupo = tarefaRepository.findByGrupo(grupo);
+
+            if (tarefasDoGrupo.size() == 1) {
+                // Buscar a conquista "Primeiro Passo"
+                Conquista primeiraTarefaConquista = conquistaRepository.findByNome("Primeiro Passo").orElse(null);
+
+                if (primeiraTarefaConquista != null) {
+                    // Verificar se a conquista já existe para o grupo
+                    GrupoConquista grupoConquista = grupoConquistaRepository.findByGrupoAndConquista(grupo, primeiraTarefaConquista);
+
+                    if (grupoConquista == null) {
+                        // Criar novo registro se não existir
+                        grupoConquista = new GrupoConquista();
+                        grupoConquista.setGrupo(grupo);
+                        grupoConquista.setConquista(primeiraTarefaConquista);
+                    }
+
+                    grupoConquista.setConquistaConcluida(true);
+                    grupoConquistaRepository.save(grupoConquista);
+                }
+            }
+
+            return novaTarefa;
         } catch (DataIntegrityViolationException e) {
             throw new RuntimeException("Erro ao salvar a tarefa.", e);
         } catch (Exception e) {
@@ -81,6 +115,30 @@ public class TarefaService {
             tarefa.setIsConcluida(true);
             tarefa.setIsRemovida(false);
             tarefaRepository.save(tarefa);
+
+            // Verifica se é a primeira tarefa concluída pelo grupo
+            Grupo grupo = tarefa.getGrupo();
+            List<Tarefa> tarefasConcluidasDoGrupo = tarefaRepository.findByGrupoAndIsConcluida(grupo, true);
+
+            if (tarefasConcluidasDoGrupo.size() == 1) {
+                // Buscar a conquista "Missão Cumprida"
+                Conquista missaoCumpridaConquista = conquistaRepository.findByNome("Missão Cumprida").orElse(null);
+
+                if (missaoCumpridaConquista != null) {
+                    // Verificar se a conquista já existe para o grupo
+                    GrupoConquista grupoConquista = grupoConquistaRepository.findByGrupoAndConquista(grupo, missaoCumpridaConquista);
+
+                    if (grupoConquista == null) {
+                        // Criar novo registro se não existir
+                        grupoConquista = new GrupoConquista();
+                        grupoConquista.setGrupo(grupo);
+                        grupoConquista.setConquista(missaoCumpridaConquista);
+                    }
+
+                    grupoConquista.setConquistaConcluida(true);
+                    grupoConquistaRepository.save(grupoConquista);
+                }
+            }
         } else {
             throw new RuntimeException("Tarefa não encontrada para o ID: " + id);
         }
@@ -130,7 +188,6 @@ public class TarefaService {
     public List<Tarefa> buscarPorGrupoConcluidas(Grupo grupo) {
         return tarefaRepository.findByGrupoAndIsConcluida(grupo, true);
     }
-
 
 
 }
