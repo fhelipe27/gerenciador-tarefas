@@ -26,7 +26,14 @@ public class ConquistaController {
         String email = principal.getName();
         Grupo grupo = grupoService.findByEmail(email);
         List<GrupoConquista> grupoConquistas = grupoConquistaRepository.findByGrupo(grupo);
+
+        // Adicionando as conquistas do grupo ao modelo
         model.addAttribute("grupoConquistas", grupoConquistas);
+
+        // Adicionando a lista de grupos com mais conquistas concluídas ao modelo
+        List<Object[]> gruposComMaisConquistas = grupoService.getGruposWithMostConquistas();
+        model.addAttribute("gruposComMaisConquistas", gruposComMaisConquistas);
+
         return "conquistas"; // Nome da página HTML (ex: conquistas.html)
     }
 }

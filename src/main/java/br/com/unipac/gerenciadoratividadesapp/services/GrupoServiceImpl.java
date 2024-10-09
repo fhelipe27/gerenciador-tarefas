@@ -59,4 +59,9 @@ public class GrupoServiceImpl implements GrupoService {
     public Grupo findByEmail(String email) {
         return grupoRepository.findByEmail(email);
     }
+
+    @Override
+    public List<Object[]> getGruposWithMostConquistas() {
+        return grupoRepository.findGruposWithMostConquistas();
+    }
 }

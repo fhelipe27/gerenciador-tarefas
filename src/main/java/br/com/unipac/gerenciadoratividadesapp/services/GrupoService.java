@@ -5,6 +5,8 @@ import br.com.unipac.gerenciadoratividadesapp.repositories.GrupoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface GrupoService {
 
@@ -13,6 +15,8 @@ public interface GrupoService {
     public boolean checkEmail(String email);
 
     public Grupo findByEmail(String email);
+
+    public List<Object[]> getGruposWithMostConquistas();
 }
 
 

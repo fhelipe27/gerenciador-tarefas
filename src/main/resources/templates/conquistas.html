@@ -47,7 +47,7 @@
 
         <section id="features">
             <div class="text-center">
-                <div class="feature bg-warning bg-gradient text-white rounded-3 my-5">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 my-5">
                     <i class="bi bi-trophy"></i>
                 </div>
             </div>
@@ -61,31 +61,46 @@
                             <!-- Verifica o status da conquista e ajusta a cor -->
                             <div th:classappend="${grupoConquista.conquistaConcluida} ? 'opacity-100' : 'opacity-25'"
                                  class="card-body text-center bg-gradient">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                <div class="feature bg-gradient bg-primary text-white rounded-3 mb-3">
                                     <i class="bi bi-award"></i>
                                 </div>
                                 <h2 class="h4 fw-bolder" th:text="${grupoConquista.conquista.nome}">Conquista Nome</h2>
-                                <p class="card-text" th:text="${grupoConquista.conquista.descricao}">Conquista Descrição</p>
+                                <p class="card-text" th:text="${grupoConquista.conquista.descricao}">Conquista
+                                    Descrição</p>
                             </div>
-                            <a th:href="@{/tarefa/criar-atividade}"
+                            <span th:href="@{/tarefa/criar-atividade}"
                                th:text="${grupoConquista.conquistaConcluida} ? 'Status: Concluído' : 'Status: Pendente'"
                                th:classappend="${grupoConquista.conquistaConcluida} ? 'bg-primary text-white' : ''"
-                               class="card-footer text-center text-black text-decoration-none"
-                               onmouseover="this.classList.add('text-decoration-underline')"
-                               onmouseout="this.classList.remove('text-decoration-underline')">
-                            </a>
+                               class="card-footer text-center text-black text-decoration-none">
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
-
+        <section class="container-sobre">
+            <h2 class="fw-bolder py-5 text-white text-center">Ranking de Conquistas</h2>
+            <div class="table-responsive mx-auto" style="width: 25%;">
+                <table class="table table-dark text-center border">
+                    <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Nome do Grupo</th>
+                        <th>Conquistas Concluídas</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="grupo, iterStat : ${gruposComMaisConquistas}">
+                        <td th:text="${iterStat.index + 1}"></td>
+                        <td th:text="${grupo[0]}">Nome do Grupo</td>
+                        <td th:text="${grupo[1]}">Conquistas Concluídas</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
-    </section>
-
-    <!-- Footer-->
+    <!-- Footer -->
     <footer class="bg-dark text-white text-center footer-padrao d-flex align-items-center">
         <div class="container">
             <p class="m-0">Copyright &copy; Fhelipe Alves - 2023</p>
@@ -96,16 +111,19 @@
         </div>
     </footer>
 
+</div>
+</section>
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </div>
 </div>
 </body>
